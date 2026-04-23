@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
+interface State {
+  textoFrase: string;
+  imagem: any;
+}
+
 const frases = [
   'Acredite em si mesmo e siga em frente.',
   'O sucesso começa com um pequeno passo.',
@@ -11,8 +16,8 @@ const frases = [
   'A felicidade começa com um pensamento positivo.',
 ];
 
-export default class App extends Component {
-  state = {
+export default class App extends Component<{}, State> {
+  state: State = {
     textoFrase: '',
     imagem: require('./assets/imagens/biscoito_fechado.jpeg'),
   };
@@ -21,7 +26,7 @@ export default class App extends Component {
     const posicao = Math.floor(Math.random() * frases.length);
     this.setState({
       textoFrase: frases[posicao],
-      imagem: require('./assets/imagens/biscoito_aberto.jpg'),
+      imagem: require('./assets/imagens/biscoito_aberto.jpg')
     });
   };
 
